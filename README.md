@@ -1,6 +1,6 @@
 # LILY
 
-LILY is very simple option parser inspired by YARGS with no dependencies
+[LILY is very simple option parser inspired by YARGS with no dependencies](https://github.com/jcubic/lily)
 
 LILY stands for LILY Is Like Yargs
 
