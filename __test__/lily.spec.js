@@ -72,3 +72,9 @@ test('should parse regex', () => {
     expect(input).toStrictEqual({_:[], foo: /foo/, b: /foo bar/gi});
 });
 
+test('should parse equal sign long option', () => {
+    const input = lily(['--foo=/foo/g', '/foo/', '-b', '/foo bar/gi'], {
+        parse_args: true
+    });
+    expect(input).toStrictEqual({_:[/foo/], foo: /foo/g, b: /foo bar/gi});
+});

@@ -1,7 +1,7 @@
 /**
  * LILY is very simple option parser inspired by YARGS with no dependencies
  *
- * Copyright (C) 2020 [Jakub T. Jankiewicz](https://jcubic.pl)
+ * Copyright (C) 2020-2021 [Jakub T. Jankiewicz](https://jcubic.pl)
  *
  * Released under MIT license
  */
@@ -20,6 +20,12 @@ module.exports = function parse_options(arg, options) {
     function token(value) {
         this.value = value;
     }
+    function process_arg(arg) {
+        if (settings.parse_args) {
+            return parse_argument(arg);
+        }
+        return arg;
+    }
     var rest = arg.reduce(function(acc, arg) {
         if (typeof arg !== 'string') {
             arg = String(arg);
@@ -34,11 +40,16 @@ module.exports = function parse_options(arg, options) {
             if (acc instanceof token) {
                 result[acc.value] = true;
             }
-            var name = arg.replace(/^--/, '');
-            if (settings.boolean.indexOf(name) === -1) {
-                return new token(name);
-            } else {
-                result[name] = true;
+            var m = arg.match(/--([^=]+)(?:=(.+))?/);
+            if (m) {
+                var name = m[1];
+                if (m[2]) {
+                    result[name] = process_arg(m[2]);
+                } else if (settings.boolean.indexOf(name) === -1) {
+                    return new token(name);
+                } else {
+                    result[name] = true;
+                }
             }
         } else if (arg.match(/^-[^-]/)) {
             var single = arg.replace(/^-/, '').split('');
@@ -53,9 +64,7 @@ module.exports = function parse_options(arg, options) {
                 return new token(last);
             }
         } else if (arg) {
-            if (settings.parse_args) {
-                arg = parse_argument(arg);
-            }
+            arg = process_arg(arg);
             if (acc instanceof token) {
                 result[acc.value] = arg;
             } else {
