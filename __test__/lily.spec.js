@@ -56,3 +56,19 @@ test('should handle short boolean options', () => {
 test('should handle long boolean options', () => {
   expect(lily(['--foo', 'hello', 'world'], { boolean: ['foo']})).toStrictEqual({_: ['hello', 'world'], foo: true});
 });
+
+test('should parse numbers', () => {
+    const input = lily(['--foo', '10', '-b', '10.10'], { parse_args: true });
+    expect(input).toStrictEqual({_:[], foo: 10, b: 10.10});
+});
+
+test('should parse booleans', () => {
+    const input = lily(['--foo', 'true', '-b', 'false', '-c'], { parse_args: true });
+    expect(input).toStrictEqual({_:[], foo: true, b: false, c: true});
+});
+
+test('should parse regex', () => {
+    const input = lily(['--foo', '/foo/', '-b', '/foo bar/gi'], { parse_args: true });
+    expect(input).toStrictEqual({_:[], foo: /foo/, b: /foo bar/gi});
+});
+

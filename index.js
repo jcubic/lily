@@ -5,9 +5,14 @@
  *
  * Released under MIT license
  */
+
+const re_re = /^\/((?:\\\/|[^/]|\[[^\]]*\/[^\]]*\])+)\/([gimsuy]*)$/;
+const float_re = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
+
 module.exports = function parse_options(arg, options) {
     var settings = Object.assign({}, {
-        boolean: []
+        boolean: [],
+        parse_args: false
     }, options);
     var result = {
         _: []
@@ -47,10 +52,15 @@ module.exports = function parse_options(arg, options) {
             if (last) {
                 return new token(last);
             }
-        } else if (acc instanceof token) {
-            result[acc.value] = arg;
         } else if (arg) {
-            result._.push(arg);
+            if (settings.parse_args) {
+                arg = parse_argument(arg);
+            }
+            if (acc instanceof token) {
+                result[acc.value] = arg;
+            } else {
+                result._.push(arg);
+            }
         }
         return null;
     }, null);
@@ -59,3 +69,23 @@ module.exports = function parse_options(arg, options) {
     }
     return result;
 };
+
+const boolean = {
+    'true': true,
+    'false': false
+};
+
+function parse_argument(arg) {
+    if (arg in boolean) {
+        return boolean[arg];
+    }
+    var regex = arg.match(re_re);
+    if (regex) {
+        return new RegExp(regex[1], regex[2]);
+    } else if (arg.match(/^-?[0-9]+$/)) {
+        return parseInt(arg, 10);
+    } else if (arg.match(float_re)) {
+        return parseFloat(arg);
+    }
+    return arg;
+}
