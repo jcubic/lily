@@ -1,6 +1,6 @@
 {
   "name": "@jcubic/lily",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Very simple option parser inspired by YARGS with no dependencies",
   "main": "index.js",
   "scripts": {
