@@ -44,6 +44,6 @@ you will get this object as result:
 
 ## License
 
-Copyright (C) 2020 [Jakub T. Jankiewicz](https://jcubic.pl)
+Copyright (C) 2020-2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)
 
 Released under MIT license
