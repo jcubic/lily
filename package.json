@@ -3,8 +3,20 @@
   "version": "1.0.0",
   "description": "Simple options parser inspired by yargs",
   "main": "index.js",
-  "scripts": {},
-  "keywords": ["parsing", "parser", "options", "cli", "arguments", "command line"],
+  "scripts": {
+    "test": "jest __test__/*.spec.js"
+  },
+  "keywords": [
+    "parsing",
+    "parser",
+    "options",
+    "cli",
+    "arguments",
+    "command line"
+  ],
   "author": "Jakub T. Jankiewicz <jcubic@onet.pl> (https://jcubic.pl/jakub-jankiewicz/)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
