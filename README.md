@@ -4,6 +4,8 @@
 
 LILY stands for LILY Is Like Yargs
 
+In fact it's inspired by [yargs-parser](https://www.npmjs.com/package/yargs-parser/) used by Yargs to parse the options.
+
 ## Installation
 
 ```bash
