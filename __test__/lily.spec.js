@@ -78,3 +78,20 @@ test('should parse equal sign long option', () => {
     });
     expect(input).toStrictEqual({_:[/foo/], foo: /foo/g, b: /foo bar/gi});
 });
+
+test('should end options with double dash', () => {
+    const input = [
+        [
+            ['--', '-x', '--hello', 'x'], {_: ['-x', '--hello', 'x']}
+        ],
+        [
+            ['-x', '--', '-x'], {_: ['-x'], x: true}
+        ],
+        [
+            ['foo', '-x', '--', '-x'], {_: ['foo', '-x'], x: true}
+        ]
+    ];
+    input.forEach(([input, output]) => {
+        expect(lily(input)).toEqual(output);
+    });
+});

@@ -26,6 +26,7 @@ module.exports = function parse_options(arg, options) {
         }
         return arg;
     }
+    var rest = false;
     var rest = arg.reduce(function(acc, arg) {
         if (typeof arg !== 'string') {
             arg = String(arg);
@@ -36,7 +37,12 @@ module.exports = function parse_options(arg, options) {
         } else if (arg.match(/^-[^-]/) && acc instanceof token) {
             result[acc.value] = true;
         }
-        if (arg.match(/^--./)) {
+        if (rest && arg) {
+            arg = process_arg(arg);
+            result._.push(arg);
+        } else if (arg === '--') {
+            rest = true;
+        } else if (arg.match(/^--./)) {
             if (acc instanceof token) {
                 result[acc.value] = true;
             }

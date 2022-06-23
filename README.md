@@ -9,7 +9,7 @@ In fact it's inspired by [yargs-parser](https://www.npmjs.com/package/yargs-pars
 ## Installation
 
 ```bash
-npm install --save-dev @jcubic/lily
+npm install --save @jcubic/lily
 ```
 
 ## Usage

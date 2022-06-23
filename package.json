@@ -1,6 +1,6 @@
 {
   "name": "@jcubic/lily",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Very simple option parser inspired by YARGS with no dependencies",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,14 @@
     "yargs",
     "command line"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcubic/lily.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jcubic/lily/issues"
+  },
+  "homepage": "https://github.com/jcubic/lily#readme",
   "author": "Jakub T. Jankiewicz <jcubic@onet.pl> (https://jcubic.pl/me/)",
   "license": "MIT",
   "devDependencies": {
