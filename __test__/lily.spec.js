@@ -1,6 +1,10 @@
 const lily = require('..');
 
 
+test('should handle non-strings', () => {
+  expect(lily([10, 20])).toStrictEqual({_: ['10', '20']});
+});
+
 test('should parse short options', () => {
   expect(lily(['-a', '-b'])).toStrictEqual({_: [], a: true, b: true});
 });
@@ -70,6 +74,10 @@ test('should parse booleans', () => {
 test('should parse regex', () => {
     const input = lily(['--foo', '/foo/', '-b', '/foo bar/gi'], { parse_args: true });
     expect(input).toStrictEqual({_:[], foo: /foo/, b: /foo bar/gi});
+});
+
+test('should parse any value', () => {
+  expect(lily(['{}', '[]', '--url', 'http://example.com'], { parse_args: true })).toStrictEqual({_: ['{}', '[]'], 'url': 'http://example.com'});
 });
 
 test('should parse equal sign long option', () => {
