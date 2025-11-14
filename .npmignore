@@ -1,3 +1,6 @@
 __test__
 test.js
 .gitattributes
+*~
+\#*
+.github
