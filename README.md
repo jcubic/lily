@@ -1,5 +1,10 @@
 # LILY
 
+[![NPM Version](https://img.shields.io/npm/v/%40jcubic/lily)](https://www.npmjs.com/package/@jcubic/lily)
+[![Test](https://github.com/jcubic/lily/actions/workflows/test.yml/badge.svg)](https://github.com/jcubic/lily/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/jcubic/lily/badge.svg?branch=master)](https://coveralls.io/github/jcubic/lily?branch=master)
+[![LICENSE MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/NApp-notes/markdown-parser/blob/master/LICENSE)
+
 [LILY is very simple option parser inspired by YARGS with no dependencies](https://github.com/jcubic/lily)
 
 LILY stands for LILY Is Like Yargs
