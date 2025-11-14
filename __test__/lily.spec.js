@@ -103,3 +103,11 @@ test('should end options with double dash', () => {
         expect(lily(input)).toEqual(output);
     });
 });
+
+test('should ignore invalid long option', () => {
+  expect(lily(['--='])).toEqual({_: []});
+});
+
+test('should ignore empty string', () => {
+  expect(lily([''])).toEqual({_: []});
+});
