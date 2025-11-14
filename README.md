@@ -22,6 +22,8 @@ npm install --save @jcubic/lily
 ```javascript
 #!/usr/bin/env node
 const lily = require('@jcubic/lily');
+// or
+import lily from '@jcubic/lily';
 
 const options = lily(process.argv.slice(2), {boolean: ['b']});
 ```
