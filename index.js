@@ -1,7 +1,7 @@
 /**
  * LILY is very simple option parser inspired by YARGS with no dependencies
  *
- * Copyright (C) 2020-2021 [Jakub T. Jankiewicz](https://jcubic.pl)
+ * Copyright (C) 2020-2025 [Jakub T. Jankiewicz](https://jcubic.pl)
  *
  * Released under MIT license
  */
