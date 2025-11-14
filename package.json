@@ -4,7 +4,8 @@
   "description": "Very simple option parser inspired by YARGS with no dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "jest __test__/*.spec.js"
+    "test": "jest __test__/*.spec.js",
+    "test:coverage": "jest __test__/*.spec.js --coverage"
   },
   "keywords": [
     "parsing",
@@ -27,5 +28,14 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^27.0.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
   }
 }
