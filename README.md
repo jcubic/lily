@@ -25,7 +25,7 @@ const lily = require('@jcubic/lily');
 // or
 import lily from '@jcubic/lily';
 
-const options = lily(process.argv.slice(2), {boolean: ['b']});
+const options = lily(process.argv.slice(2), { boolean: ['b'] });
 ```
 
 if you run the script with:
@@ -50,6 +50,13 @@ you will get this object as result:
     "b": true
 }
 ```
+
+## Options
+
+| Option | Description |
+| --- | --- |
+| `boolean` | Array of option names treated as boolean flags, so they don't consume the next argument as their value. |
+| `parse_args` | When `true`, parses values into `number`, `boolean` or `RegExp` where possible; otherwise all values stay `string`. |
 
 ## License
 
