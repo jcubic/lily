@@ -31,9 +31,28 @@ declare module '@jcubic/lily' {
   }
 
   /**
-   * The result object returned by lily parser
+   * The result object returned by lily parser when `parse_args` is false or omitted.
+   * All argument values remain strings (booleans are only used for flags).
    */
   export interface LilyResult {
+    /**
+     * Array of non-option arguments (positional arguments)
+     */
+    _: Array<string>;
+
+    /**
+     * Parsed options as key-value pairs.
+     * Values can be:
+     * - true for boolean flags
+     * - string for string arguments
+     */
+    [key: string]: string | boolean | Array<string>;
+  }
+
+  /**
+   * The result object returned by lily parser when `parse_args` is true.
+   */
+  export interface LilyParsedResult {
     /**
      * Array of non-option arguments (positional arguments)
      */
@@ -44,9 +63,9 @@ declare module '@jcubic/lily' {
      * Values can be:
      * - true for boolean flags
      * - string for string arguments
-     * - number for numeric arguments (when parse_args is true)
-     * - boolean for boolean arguments (when parse_args is true)
-     * - RegExp for regex arguments (when parse_args is true)
+     * - number for numeric arguments
+     * - boolean for boolean arguments
+     * - RegExp for regex arguments
      */
     [key: string]: string | number | boolean | RegExp | Array<string | number | boolean | RegExp>;
   }
@@ -95,7 +114,8 @@ declare module '@jcubic/lily' {
    * lily(['--foo', '--', '--bar'])
    * // Result: { _: ['--bar'], foo: true }
    */
-  function lily(args: string[], options?: LilyOptions): LilyResult;
+  function lily(args: string[], options?: LilyOptions & { parse_args?: false }): LilyResult;
+  function lily(args: string[], options: LilyOptions & { parse_args: true }): LilyParsedResult;
 
   export default lily;
 }
